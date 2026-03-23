@@ -120,7 +120,7 @@ export default function MenuPage() {
       </section>
 
       {/* Sticky category nav */}
-      <div className="sticky top-[73px] z-30 border-b border-border bg-white/95 backdrop-blur-md">
+      <div className="sticky top-[88px] z-30 border-b border-border bg-white/95 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-4 py-2.5">
           <div
             ref={navRef}
