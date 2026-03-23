@@ -69,6 +69,14 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/sms-signup"
+                    className="text-sm text-white/60 transition-all duration-300 hover:text-white hover:translate-x-1 inline-block"
+                  >
+                    SMS Sign Up
+                  </Link>
+                </li>
               </ul>
             </div>
           </ScrollReveal>
