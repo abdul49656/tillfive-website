@@ -121,19 +121,19 @@ export default function MenuPage() {
 
       {/* Sticky category nav */}
       <div className="sticky top-[73px] z-30 border-b border-border bg-white/95 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-4">
           <div
             ref={navRef}
-            className="hide-scrollbar flex gap-1 overflow-x-auto py-3 px-1"
+            className="hide-scrollbar flex items-center gap-1 overflow-x-auto py-2.5 px-1"
           >
             {menuCategories.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => scrollToCategory(cat.id)}
                 className={cn(
-                  "relative shrink-0 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+                  "relative shrink-0 rounded-full px-3 py-1.5 text-xs font-medium transition-all duration-300",
                   activeCategory === cat.id
-                    ? "bg-brand text-white shadow-md shadow-brand/20"
+                    ? "bg-brand text-white shadow-sm shadow-brand/20"
                     : "text-foreground-muted hover:bg-background-alt hover:text-foreground"
                 )}
               >
