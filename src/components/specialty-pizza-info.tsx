@@ -22,29 +22,6 @@ export function SpecialtyPizzaInfo() {
   return (
     <div className="space-y-8">
 
-      {/* ── Calzone highlight ── */}
-      <div className="flex items-center gap-4 rounded-2xl border border-border bg-background-alt p-4">
-        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
-          <Image
-            src="/images/pizzas/calzone.jpg"
-            alt="Calzone"
-            fill
-            className="object-cover"
-            sizes="80px"
-            loading="eager"
-          />
-        </div>
-        <div>
-          <p className="text-[11px] font-semibold uppercase tracking-wide text-brand">
-            Also Available
-          </p>
-          <h3 className="mt-0.5 text-base font-bold text-foreground">Calzone</h3>
-          <p className="mt-1 text-xs leading-relaxed text-foreground-muted">
-            Any specialty pizza can be made as a calzone — same size, same price.
-          </p>
-        </div>
-      </div>
-
       {/* ── Pricing by size ── */}
       <div>
         <Label>Specialty Pizza Pricing</Label>
@@ -88,6 +65,29 @@ export function SpecialtyPizzaInfo() {
               </p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* ── Calzone highlight ── */}
+      <div className="flex items-center gap-4 rounded-2xl border border-border bg-background-alt p-4">
+        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl">
+          <Image
+            src="/images/pizzas/calzone.jpg"
+            alt="Calzone"
+            fill
+            className="object-cover"
+            sizes="80px"
+            loading="eager"
+          />
+        </div>
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-wide text-brand">
+            Also Available
+          </p>
+          <h3 className="mt-0.5 text-base font-bold text-foreground">Calzone</h3>
+          <p className="mt-1 text-xs leading-relaxed text-foreground-muted">
+            Any specialty pizza can be made as a calzone — same size, same price.
+          </p>
         </div>
       </div>
 
