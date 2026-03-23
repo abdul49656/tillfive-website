@@ -54,56 +54,57 @@ export function MobileMenuContent() {
 
   return (
     <>
-      {/* ── Sticky header ── */}
-      <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-md">
-
-        {/* Location card */}
-        <div className="px-4 pt-4 pb-3">
-          <div className="flex items-start gap-3">
-            <Image
-              src="/images/logo.png"
-              alt="Till Five Pizza"
-              width={44}
-              height={44}
-              className="rounded-full shrink-0 mt-0.5"
-              loading="eager"
-            />
-            <div className="flex-1 min-w-0">
-              <p className="font-bold text-base text-foreground leading-tight">Till Five Pizza</p>
-              <p className="text-xs font-semibold text-brand mt-0.5">{location.name}</p>
-              <div className="mt-1.5 flex flex-col gap-0.5">
-                <div className="flex items-center gap-1.5">
-                  <MapPin size={11} className="shrink-0 text-foreground-subtle" />
-                  <p className="text-xs text-foreground-muted truncate">{location.address}, {location.city}</p>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Clock size={11} className="shrink-0 text-foreground-subtle" />
-                  <p className="text-xs text-foreground-muted">Open {location.hours}</p>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <Phone size={11} className="shrink-0 text-foreground-subtle" />
-                  <a href={`tel:${location.phoneRaw}`} className="text-xs text-foreground-muted">
-                    {location.phone}
-                  </a>
+      {/* ── Location card (scrolls away) ── */}
+      <div className="border-b border-border bg-white px-4 pt-4 pb-3">
+        <div className="flex items-start gap-3">
+          <Image
+            src="/images/logo.png"
+            alt="Till Five Pizza"
+            width={44}
+            height={44}
+            className="rounded-full shrink-0 mt-0.5"
+            loading="eager"
+          />
+          <div className="flex-1 min-w-0">
+            <p className="font-bold text-base text-foreground leading-tight">Till Five Pizza</p>
+            <p className="text-xs font-semibold text-brand mt-0.5">{location.name}</p>
+            <div className="mt-1.5 flex flex-col gap-0.5">
+              <div className="flex items-start gap-1.5">
+                <MapPin size={11} className="shrink-0 text-foreground-subtle mt-0.5" />
+                <div>
+                  <p className="text-xs text-foreground-muted">{location.address}</p>
+                  <p className="text-xs text-foreground-muted">{location.city}</p>
                 </div>
               </div>
-            </div>
-            {/* Storefront image */}
-            <div className="relative h-[72px] w-[88px] shrink-0 overflow-hidden rounded-xl">
-              <Image
-                src="/images/storefront.jpg"
-                alt="Murfreesboro Pike location"
-                fill
-                className="object-cover"
-                sizes="88px"
-                loading="eager"
-              />
+              <div className="flex items-center gap-1.5">
+                <Clock size={11} className="shrink-0 text-foreground-subtle" />
+                <p className="text-xs text-foreground-muted">Open {location.hours}</p>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Phone size={11} className="shrink-0 text-foreground-subtle" />
+                <a href={`tel:${location.phoneRaw}`} className="text-xs text-foreground-muted">
+                  {location.phone}
+                </a>
+              </div>
             </div>
           </div>
+          {/* Storefront image */}
+          <div className="relative h-[110px] w-[130px] shrink-0 overflow-hidden rounded-xl">
+            <Image
+              src="/images/storefront.jpg"
+              alt="Murfreesboro Pike location"
+              fill
+              className="object-cover"
+              sizes="130px"
+              loading="eager"
+            />
+          </div>
         </div>
+      </div>
 
-        {/* Category pills */}
-        <div className="relative border-t border-border">
+      {/* ── Category pills (sticky) ── */}
+      <div className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-md">
+        <div className="relative">
           <div className="pointer-events-none absolute left-0 inset-y-0 w-5 bg-gradient-to-r from-white to-transparent z-10" />
           <div
             ref={categoryNavRef}
@@ -128,7 +129,7 @@ export function MobileMenuContent() {
           </div>
           <div className="pointer-events-none absolute right-0 inset-y-0 w-5 bg-gradient-to-l from-white to-transparent z-10" />
         </div>
-      </header>
+      </div>
 
       {/* ── Menu sections ── */}
       <div className="px-4 py-6 pb-28">
@@ -146,7 +147,7 @@ export function MobileMenuContent() {
               key={cat.id}
               id={cat.id}
               ref={(el) => { sectionRefs.current[cat.id] = el; }}
-              className="mb-6 scroll-mt-[160px]"
+              className="mb-6 scroll-mt-[56px]"
             >
               <CollapsibleSection
                 title={cat.name}
