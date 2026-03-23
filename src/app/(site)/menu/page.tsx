@@ -11,6 +11,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { ImageCarousel } from "@/components/image-carousel";
 import { CollapsibleSection } from "@/components/collapsible-section";
 import { PizzaBuilderInfo } from "@/components/pizza-builder-info";
+import { SpecialtyPizzaInfo } from "@/components/specialty-pizza-info";
 
 const bannerImages = [
   { src: "/images/pizzas/primo-pizza.jpg", alt: "Primo Pizza" },
@@ -175,12 +176,17 @@ export default function MenuPage() {
                   <PizzaBuilderInfo />
                 )}
 
+                {cat.id === "specialty" && (
+                  <SpecialtyPizzaInfo />
+                )}
+
                 {sortedItems.length > 0 && (
                   <>
-                    {cat.id === "pizza" && (
-                      <div className="mt-10 mb-4 border-t border-border pt-8">
-                        <p className="text-lg font-bold text-foreground">Popular Combinations</p>
-                        <p className="text-sm text-foreground-muted">Try one of our ready-made specialty favorites</p>
+                    {cat.id === "specialty" && (
+                      <div className="mt-8 mb-4 border-t border-border pt-6">
+                        <p className="border-l-2 border-brand pl-2 text-xs font-bold uppercase tracking-[0.12em] text-foreground">
+                          Specialty Pizzas
+                        </p>
                       </div>
                     )}
                     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -205,9 +211,11 @@ export default function MenuPage() {
                               <h3 className="text-sm font-semibold text-foreground leading-snug group-hover:text-brand transition-colors duration-300">
                                 {item.name}
                               </h3>
-                              <span className="shrink-0 text-sm font-bold text-brand">
-                                {item.price}
-                              </span>
+                              {cat.id !== "specialty" && (
+                                <span className="shrink-0 text-sm font-bold text-brand">
+                                  {item.price}
+                                </span>
+                              )}
                             </div>
                             {item.description && (
                               <p className="mt-1 text-xs leading-relaxed text-foreground-muted line-clamp-2">

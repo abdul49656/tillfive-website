@@ -2,15 +2,18 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { Phone, ShoppingBag } from "lucide-react";
+import { MapPin, Phone, Clock, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { menuCategories } from "@/lib/menu-data";
 import { locations } from "@/lib/site-data";
+import { CollapsibleSection } from "@/components/collapsible-section";
+import { PizzaBuilderInfo } from "@/components/pizza-builder-info";
+import { SpecialtyPizzaInfo } from "@/components/specialty-pizza-info";
 
 const NASHVILLE_ORDER_URL =
   "https://tillfivepizza.activemenus.com/glue/Antioch-Airport-Downtown-menu/134349";
-import { CollapsibleSection } from "@/components/collapsible-section";
-import { PizzaBuilderInfo } from "@/components/pizza-builder-info";
+
+const location = locations[0]; // Murfreesboro Pike
 
 export function MobileMenuContent() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
@@ -53,19 +56,49 @@ export function MobileMenuContent() {
     <>
       {/* ── Sticky header ── */}
       <header className="sticky top-0 z-40 border-b border-border bg-white/95 backdrop-blur-md">
-        <div className="flex items-center gap-3 px-4 py-3">
-          <Image
-            src="/images/logo.png"
-            alt="Till Five Pizza"
-            width={36}
-            height={36}
-            className="rounded-full shrink-0"
-          />
-          <div className="min-w-0">
-            <p className="font-bold text-foreground leading-tight">Till Five Pizza</p>
-            <p className="text-xs text-foreground-subtle truncate">
-              Open 10 AM – 5 AM · Nashville, TN
-            </p>
+
+        {/* Location card */}
+        <div className="px-4 pt-4 pb-3">
+          <div className="flex items-start gap-3">
+            <Image
+              src="/images/logo.png"
+              alt="Till Five Pizza"
+              width={44}
+              height={44}
+              className="rounded-full shrink-0 mt-0.5"
+              loading="eager"
+            />
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-base text-foreground leading-tight">Till Five Pizza</p>
+              <p className="text-xs font-semibold text-brand mt-0.5">{location.name}</p>
+              <div className="mt-1.5 flex flex-col gap-0.5">
+                <div className="flex items-center gap-1.5">
+                  <MapPin size={11} className="shrink-0 text-foreground-subtle" />
+                  <p className="text-xs text-foreground-muted truncate">{location.address}, {location.city}</p>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Clock size={11} className="shrink-0 text-foreground-subtle" />
+                  <p className="text-xs text-foreground-muted">Open {location.hours}</p>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Phone size={11} className="shrink-0 text-foreground-subtle" />
+                  <a href={`tel:${location.phoneRaw}`} className="text-xs text-foreground-muted">
+                    {location.phone}
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* Storefront image */}
+            <div className="relative h-[72px] w-[88px] shrink-0 overflow-hidden rounded-xl">
+              <Image
+                src="/images/storefront.jpg"
+                alt="Murfreesboro Pike location"
+                fill
+                className="object-cover"
+                sizes="88px"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
 
@@ -113,60 +146,67 @@ export function MobileMenuContent() {
               key={cat.id}
               id={cat.id}
               ref={(el) => { sectionRefs.current[cat.id] = el; }}
-              className="mb-6 scroll-mt-[120px]"
+              className="mb-6 scroll-mt-[160px]"
             >
               <CollapsibleSection
                 title={cat.name}
-                description={cat.id === "pizza" ? undefined : cat.description}
+                description={cat.id === "pizza" || cat.id === "specialty" ? undefined : cat.description}
                 defaultOpen={true}
               >
                 {cat.id === "pizza" && (
                   <PizzaBuilderInfo />
                 )}
 
+                {cat.id === "specialty" && (
+                  <SpecialtyPizzaInfo />
+                )}
+
                 {sortedItems.length > 0 && (
                   <>
-                    {cat.id === "pizza" && (
-                      <div className="mt-8 mb-3 border-t border-border pt-6">
-                        <p className="text-sm font-bold text-foreground">Popular Combinations</p>
-                        <p className="text-xs text-foreground-muted">Ready-made specialty favorites</p>
+                    {cat.id === "specialty" && (
+                      <div className="mt-6 mb-3 border-t border-border pt-5">
+                        <p className="border-l-2 border-brand pl-2 text-xs font-bold uppercase tracking-[0.12em] text-foreground">
+                          Specialty Pizzas
+                        </p>
                       </div>
                     )}
-                <div className="flex flex-col gap-3">
-                  {sortedItems.map((item) => (
-                    <div
-                      key={item.name}
-                      className="flex gap-3 rounded-xl border border-border bg-white p-3"
-                    >
-                      {item.image && (
-                        <div className="relative h-[68px] w-[68px] shrink-0 overflow-hidden rounded-lg">
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-cover"
-                            sizes="68px"
-                          />
+                    <div className="flex flex-col gap-3">
+                      {sortedItems.map((item) => (
+                        <div
+                          key={item.name}
+                          className="flex gap-3 rounded-xl border border-border bg-white p-3"
+                        >
+                          {item.image && (
+                            <div className="relative h-[68px] w-[68px] shrink-0 overflow-hidden rounded-lg">
+                              <Image
+                                src={item.image}
+                                alt={item.name}
+                                fill
+                                className="object-cover"
+                                sizes="68px"
+                              />
+                            </div>
+                          )}
+                          <div className="flex min-w-0 flex-1 flex-col justify-center">
+                            <div className="flex items-start justify-between gap-2">
+                              <h3 className="text-sm font-semibold text-foreground leading-snug">
+                                {item.name}
+                              </h3>
+                              {cat.id !== "specialty" && (
+                                <span className="shrink-0 text-sm font-bold text-brand">
+                                  {item.price}
+                                </span>
+                              )}
+                            </div>
+                            {item.description && (
+                              <p className="mt-0.5 text-xs leading-relaxed text-foreground-muted line-clamp-2">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      )}
-                      <div className="flex min-w-0 flex-1 flex-col justify-center">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="text-sm font-semibold text-foreground leading-snug">
-                            {item.name}
-                          </h3>
-                          <span className="shrink-0 text-sm font-bold text-brand">
-                            {item.price}
-                          </span>
-                        </div>
-                        {item.description && (
-                          <p className="mt-0.5 text-xs leading-relaxed text-foreground-muted line-clamp-2">
-                            {item.description}
-                          </p>
-                        )}
-                      </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
                   </>
                 )}
               </CollapsibleSection>
@@ -174,16 +214,25 @@ export function MobileMenuContent() {
           );
         })}
 
-        {/* Location info at bottom */}
-        <div className="mt-4 rounded-2xl bg-background-alt p-5 text-center">
-          <p className="text-sm font-semibold text-foreground">Two Nashville Locations</p>
-          {locations.map((loc) => (
-            <div key={loc.id} className="mt-3">
-              <p className="text-xs font-medium text-foreground">{loc.name}</p>
-              <p className="text-xs text-foreground-muted">{loc.address}, {loc.city}</p>
-              <p className="text-xs text-foreground-subtle">{loc.hours}</p>
+        {/* Murfreesboro Pike location info */}
+        <div className="mt-4 rounded-2xl bg-background-alt p-5">
+          <p className="text-sm font-bold text-foreground">{location.name}</p>
+          <div className="mt-2 space-y-1.5">
+            <div className="flex items-start gap-2">
+              <MapPin size={13} className="mt-0.5 shrink-0 text-brand" />
+              <p className="text-xs text-foreground-muted">{location.address}, {location.city}</p>
             </div>
-          ))}
+            <div className="flex items-center gap-2">
+              <Clock size={13} className="shrink-0 text-brand" />
+              <p className="text-xs text-foreground-muted">Open {location.hours}</p>
+            </div>
+            <div className="flex items-center gap-2">
+              <Phone size={13} className="shrink-0 text-brand" />
+              <a href={`tel:${location.phoneRaw}`} className="text-xs text-foreground-muted">
+                {location.phone}
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -191,7 +240,7 @@ export function MobileMenuContent() {
       <div className="fixed bottom-0 inset-x-0 z-50 border-t border-border bg-white/95 backdrop-blur-md px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <div className="flex gap-3">
           <a
-            href={`tel:${locations[0].phoneRaw}`}
+            href={`tel:${location.phoneRaw}`}
             className="flex flex-1 items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:border-brand hover:text-brand"
           >
             <Phone size={16} />

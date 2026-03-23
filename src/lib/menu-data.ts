@@ -24,17 +24,6 @@ export const menuCategories: MenuCategory[] = [
         description: "Classic cheese or create your own pizza. Can be ordered as a calzone.",
         image: "/images/pizzas/cheese-pizza.jpg",
       },
-      {
-        name: "Pepperoni Pizza",
-        price: "$10.99",
-        description: "Classic pepperoni pizza. Can be ordered as a calzone.",
-        image: "/images/pizzas/pepperoni-lover-pizza.jpg",
-      },
-      {
-        name: "Sausage Pizza",
-        price: "$10.99",
-        description: "Classic sausage pizza. Can be ordered as a calzone.",
-      },
     ],
   },
   {
@@ -169,12 +158,6 @@ export const menuCategories: MenuCategory[] = [
         name: "Buffalo Chicken Pizza",
         price: "$12.99",
         description: "Grilled chicken, hot sauce, ranch sauce, jalapeno, tomato, mozzarella & cheddar cheese.",
-      },
-      {
-        name: "Calzone",
-        price: "$12.99",
-        description: "Any pizza can be made as a calzone.",
-        image: "/images/pizzas/calzone.jpg",
       },
     ],
   },

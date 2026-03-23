@@ -42,7 +42,7 @@ const VEGGIE_TOPPINGS = [
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-foreground-subtle">
+    <p className="mb-3 border-l-2 border-brand pl-2 text-xs font-bold uppercase tracking-[0.12em] text-foreground">
       {children}
     </p>
   );
@@ -56,14 +56,18 @@ export function PizzaBuilderInfo() {
       <div>
         <Label>Choose Your Size</Label>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-          {SIZES.map((size) => (
+          {SIZES.map((size, index) => (
             <div
               key={size.name}
               className={cn(
                 "relative rounded-2xl border p-4 text-center transition-all",
                 size.popular
                   ? "border-brand bg-brand shadow-sm shadow-brand/20"
-                  : "border-border bg-white"
+                  : "border-border bg-white",
+                // Center the orphaned last item on mobile 2-col layout
+                index === SIZES.length - 1 && SIZES.length % 2 !== 0
+                  ? "col-span-2 sm:col-span-1 mx-auto sm:mx-0 w-[calc(50%-6px)] sm:w-auto"
+                  : ""
               )}
             >
               {size.popular && (
