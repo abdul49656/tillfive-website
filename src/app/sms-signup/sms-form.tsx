@@ -2,10 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
-
-const PRIVACY_URL = "https://tillfivepizza.activemenus.com/privacy-policy";
-const TERMS_URL = "https://tillfivepizza.activemenus.com/terms-of-service";
 
 export function SmsForm() {
   const [phone, setPhone] = useState("");
@@ -14,7 +12,6 @@ export function SmsForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!checked) return;
     setSubmitted(true);
   }
 
@@ -79,12 +76,11 @@ export function SmsForm() {
                 />
               </div>
 
-              {/* Consent checkbox */}
+              {/* Consent checkbox — optional, for tracking only */}
               <div className="flex items-start gap-3">
                 <input
                   id="consent"
                   type="checkbox"
-                  required
                   checked={checked}
                   onChange={(e) => setChecked(e.target.checked)}
                   className="mt-1 h-4 w-4 shrink-0 cursor-pointer rounded border-border accent-brand"
@@ -94,36 +90,31 @@ export function SmsForm() {
                   className="text-sm text-foreground-muted leading-relaxed cursor-pointer"
                 >
                   By checking this box, you agree to receive promotional SMS text
-                  messages from Till Five Pizza. Message frequency varies. Msg &amp;
+                  messages from Rasul Pizza LLC. Message frequency varies. Msg &amp;
                   data rates may apply. Reply STOP at any time to opt out. Reply
                   HELP for help. Your information will not be shared with third
-                  parties for marketing purposes. View our{" "}
-                  <a
-                    href={PRIVACY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  parties for their own marketing purposes. View our{" "}
+                  <Link
+                    href="/privacy-policy"
                     className="text-brand underline underline-offset-2 hover:text-brand-hover"
                   >
                     Privacy Policy
-                  </a>{" "}
+                  </Link>{" "}
                   and{" "}
-                  <a
-                    href={TERMS_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    href="/terms-of-service"
                     className="text-brand underline underline-offset-2 hover:text-brand-hover"
                   >
                     Terms of Service
-                  </a>
+                  </Link>
                   .
                 </label>
               </div>
 
-              {/* Submit */}
+              {/* Submit — always enabled */}
               <button
                 type="submit"
-                disabled={!checked}
-                className="w-full rounded-full bg-brand px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/25 hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0 disabled:hover:shadow-none"
+                className="w-full rounded-full bg-brand px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/25 hover:-translate-y-0.5"
               >
                 Sign Me Up
               </button>
@@ -148,23 +139,19 @@ export function SmsForm() {
               </a>
               . Till Five Pizza will not share your opt-in data or phone number
               with any third party for their own marketing purposes. View our{" "}
-              <a
-                href={PRIVACY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/privacy-policy"
                 className="text-brand underline underline-offset-2 hover:text-brand-hover"
               >
                 Privacy Policy
-              </a>{" "}
+              </Link>{" "}
               and{" "}
-              <a
-                href={TERMS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/terms-of-service"
                 className="text-brand underline underline-offset-2 hover:text-brand-hover"
               >
                 Terms of Service
-              </a>{" "}
+              </Link>{" "}
               for full details.
             </p>
           </div>

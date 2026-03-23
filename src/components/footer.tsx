@@ -77,6 +77,22 @@ export function Footer() {
                     SMS Sign Up
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/privacy-policy"
+                    className="text-sm text-white/60 transition-all duration-300 hover:text-white hover:translate-x-1 inline-block"
+                  >
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/terms-of-service"
+                    className="text-sm text-white/60 transition-all duration-300 hover:text-white hover:translate-x-1 inline-block"
+                  >
+                    Terms of Service
+                  </Link>
+                </li>
               </ul>
             </div>
           </ScrollReveal>
