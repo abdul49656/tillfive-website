@@ -122,11 +122,12 @@ export default function MenuPage() {
       {/* Sticky category nav */}
       <div className="sticky top-[73px] z-30 border-b border-border bg-white/95 backdrop-blur-md">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="relative">
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent z-10" />
+          {/* Mobile: scrollable; Desktop: wrap so all pills are visible */}
+          <div className="relative sm:static">
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 bg-gradient-to-r from-white to-transparent z-10 sm:hidden" />
             <div
               ref={navRef}
-              className="hide-scrollbar flex gap-1 overflow-x-auto py-3 px-1"
+              className="hide-scrollbar flex flex-wrap gap-1 overflow-x-auto py-3 px-1 sm:overflow-x-visible"
             >
               {menuCategories.map((cat) => (
                 <button
@@ -142,9 +143,8 @@ export default function MenuPage() {
                   {cat.name}
                 </button>
               ))}
-              <div className="shrink-0 w-4" aria-hidden="true" />
             </div>
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent z-10" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 bg-gradient-to-l from-white to-transparent z-10 sm:hidden" />
           </div>
         </div>
       </div>
