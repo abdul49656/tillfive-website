@@ -10,6 +10,7 @@ import { siteConfig } from "@/lib/site-data";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ImageCarousel } from "@/components/image-carousel";
 import { CollapsibleSection } from "@/components/collapsible-section";
+import { PizzaBuilderInfo } from "@/components/pizza-builder-info";
 
 const bannerImages = [
   { src: "/images/pizzas/primo-pizza.jpg", alt: "Primo Pizza" },
@@ -150,11 +151,13 @@ export default function MenuPage() {
       {/* Menu sections */}
       <div className="mx-auto max-w-7xl px-6 py-12">
         {menuCategories.map((cat) => {
-          const sortedItems = [...cat.items].sort((a, b) => {
-            if (a.image && !b.image) return -1;
-            if (!a.image && b.image) return 1;
-            return 0;
-          });
+          const sortedItems = [...cat.items]
+            .filter((item) => !(cat.id === "pizza" && item.name === "Build Your Own Pizza"))
+            .sort((a, b) => {
+              if (a.image && !b.image) return -1;
+              if (!a.image && b.image) return 1;
+              return 0;
+            });
 
           return (
             <section
@@ -165,44 +168,58 @@ export default function MenuPage() {
             >
               <CollapsibleSection
                 title={cat.name}
-                description={cat.description}
+                description={cat.id === "pizza" ? undefined : cat.description}
                 defaultOpen={true}
               >
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {sortedItems.map((item) => (
-                    <div
-                      key={item.name}
-                      className="group flex gap-4 rounded-xl border border-border bg-white p-4 transition-all duration-500 hover:shadow-lg hover:border-brand/20 hover:-translate-y-0.5"
-                    >
-                      {item.image && (
-                        <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-110"
-                            sizes="80px"
-                          />
-                        </div>
-                      )}
-                      <div className="flex min-w-0 flex-1 flex-col justify-center">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="text-sm font-semibold text-foreground leading-snug group-hover:text-brand transition-colors duration-300">
-                            {item.name}
-                          </h3>
-                          <span className="shrink-0 text-sm font-bold text-brand">
-                            {item.price}
-                          </span>
-                        </div>
-                        {item.description && (
-                          <p className="mt-1 text-xs leading-relaxed text-foreground-muted line-clamp-2">
-                            {item.description}
-                          </p>
-                        )}
+                {cat.id === "pizza" && (
+                  <PizzaBuilderInfo />
+                )}
+
+                {sortedItems.length > 0 && (
+                  <>
+                    {cat.id === "pizza" && (
+                      <div className="mt-10 mb-4 border-t border-border pt-8">
+                        <p className="text-lg font-bold text-foreground">Popular Combinations</p>
+                        <p className="text-sm text-foreground-muted">Try one of our ready-made specialty favorites</p>
                       </div>
+                    )}
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                      {sortedItems.map((item) => (
+                        <div
+                          key={item.name}
+                          className="group flex gap-4 rounded-xl border border-border bg-white p-4 transition-all duration-500 hover:shadow-lg hover:border-brand/20 hover:-translate-y-0.5"
+                        >
+                          {item.image && (
+                            <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg">
+                              <Image
+                                src={item.image}
+                                alt={item.name}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                sizes="80px"
+                              />
+                            </div>
+                          )}
+                          <div className="flex min-w-0 flex-1 flex-col justify-center">
+                            <div className="flex items-start justify-between gap-2">
+                              <h3 className="text-sm font-semibold text-foreground leading-snug group-hover:text-brand transition-colors duration-300">
+                                {item.name}
+                              </h3>
+                              <span className="shrink-0 text-sm font-bold text-brand">
+                                {item.price}
+                              </span>
+                            </div>
+                            {item.description && (
+                              <p className="mt-1 text-xs leading-relaxed text-foreground-muted line-clamp-2">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
               </CollapsibleSection>
             </section>
           );

@@ -10,6 +10,7 @@ import { locations } from "@/lib/site-data";
 const NASHVILLE_ORDER_URL =
   "https://tillfivepizza.activemenus.com/glue/Antioch-Airport-Downtown-menu/134349";
 import { CollapsibleSection } from "@/components/collapsible-section";
+import { PizzaBuilderInfo } from "@/components/pizza-builder-info";
 
 export function MobileMenuContent() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
@@ -99,11 +100,13 @@ export function MobileMenuContent() {
       {/* ── Menu sections ── */}
       <div className="px-4 py-6 pb-28">
         {menuCategories.map((cat) => {
-          const sortedItems = [...cat.items].sort((a, b) => {
-            if (a.image && !b.image) return -1;
-            if (!a.image && b.image) return 1;
-            return 0;
-          });
+          const sortedItems = [...cat.items]
+            .filter((item) => !(cat.id === "pizza" && item.name === "Build Your Own Pizza"))
+            .sort((a, b) => {
+              if (a.image && !b.image) return -1;
+              if (!a.image && b.image) return 1;
+              return 0;
+            });
 
           return (
             <section
@@ -114,9 +117,21 @@ export function MobileMenuContent() {
             >
               <CollapsibleSection
                 title={cat.name}
-                description={cat.description}
+                description={cat.id === "pizza" ? undefined : cat.description}
                 defaultOpen={true}
               >
+                {cat.id === "pizza" && (
+                  <PizzaBuilderInfo />
+                )}
+
+                {sortedItems.length > 0 && (
+                  <>
+                    {cat.id === "pizza" && (
+                      <div className="mt-8 mb-3 border-t border-border pt-6">
+                        <p className="text-sm font-bold text-foreground">Popular Combinations</p>
+                        <p className="text-xs text-foreground-muted">Ready-made specialty favorites</p>
+                      </div>
+                    )}
                 <div className="flex flex-col gap-3">
                   {sortedItems.map((item) => (
                     <div
@@ -152,6 +167,8 @@ export function MobileMenuContent() {
                     </div>
                   ))}
                 </div>
+                  </>
+                )}
               </CollapsibleSection>
             </section>
           );
