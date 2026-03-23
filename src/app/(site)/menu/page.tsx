@@ -124,7 +124,7 @@ export default function MenuPage() {
         <div className="mx-auto max-w-7xl px-4 py-2.5">
           <div
             ref={navRef}
-            className="hide-scrollbar flex items-center gap-1 overflow-x-auto"
+            className="hide-scrollbar flex items-center justify-center gap-1 overflow-x-auto"
           >
             {menuCategories.map((cat) => (
               <button
