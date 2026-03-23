@@ -62,8 +62,13 @@ export function MobileMenuContent() {
 
   return (
     <>
+      {/* ── Mobile Menu banner ── */}
+      <div className="bg-brand py-3 text-center">
+        <p className="text-2xl font-black tracking-tight text-white">Mobile Menu</p>
+      </div>
+
       {/* ── Mini hero (scrolls away) ── */}
-      <div className="relative h-36 overflow-hidden">
+      <div className="relative h-[122px] overflow-hidden">
         <Image
           src="/images/storefront.jpg"
           alt="Till Five Pizza – Murfreesboro Pike"
@@ -88,8 +93,7 @@ export function MobileMenuContent() {
 
         {/* Content — vertically centered */}
         <div className="relative z-10 flex h-full flex-col justify-center px-5">
-          <p className="text-xl font-black text-white leading-tight">Mobile Menu</p>
-          <p className="mt-1 text-sm font-semibold text-white">Till Five Pizza</p>
+          <p className="text-sm font-semibold text-white">Till Five Pizza</p>
           <div className="mt-1.5 flex flex-col gap-1">
             <div className="flex items-start gap-1.5">
               <MapPin size={11} className="mt-0.5 shrink-0 text-white/70" />

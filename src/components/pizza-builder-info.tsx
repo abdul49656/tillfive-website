@@ -60,43 +60,23 @@ export function PizzaBuilderInfo() {
             <div
               key={size.name}
               className={cn(
-                "relative rounded-2xl border p-4 text-center transition-all",
-                size.popular
-                  ? "border-brand bg-brand shadow-sm shadow-brand/20"
-                  : "border-border bg-white",
+                "relative rounded-2xl border border-border bg-white p-4 text-center transition-all",
                 // Center the orphaned last item on mobile 2-col layout
                 index === SIZES.length - 1 && SIZES.length % 2 !== 0
                   ? "col-span-2 sm:col-span-1 mx-auto sm:mx-0 w-[calc(50%-6px)] sm:w-auto"
                   : ""
               )}
             >
-              {size.popular && (
-                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-foreground px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white whitespace-nowrap">
-                  Most Popular
-                </span>
-              )}
-              <p className={cn(
-                "text-xs font-bold uppercase tracking-wide",
-                size.popular ? "text-white/70" : "text-foreground-subtle"
-              )}>
+              <p className="text-xs font-bold uppercase tracking-wide text-foreground-subtle">
                 {size.name}
               </p>
-              <p className={cn(
-                "mt-1 text-3xl font-black leading-none",
-                size.popular ? "text-white" : "text-brand"
-              )}>
+              <p className="mt-1 text-3xl font-black leading-none text-brand">
                 {size.inches}
               </p>
-              <p className={cn(
-                "mt-2 text-xl font-bold",
-                size.popular ? "text-white" : "text-foreground"
-              )}>
+              <p className="mt-2 text-xl font-bold text-foreground">
                 {size.base}
               </p>
-              <p className={cn(
-                "mt-1 text-xs",
-                size.popular ? "text-white/80" : "text-foreground-muted"
-              )}>
+              <p className="mt-1 text-xs text-foreground-muted">
                 {size.topping} / topping
               </p>
             </div>
