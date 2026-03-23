@@ -253,15 +253,10 @@ export const menuCategories: MenuCategory[] = [
         image: "/images/appetizers/sampler-platter.jpg",
       },
       {
-        name: "French Fries (Small)",
-        price: "$2.99",
+        name: "French Fries",
+        price: "Sm $2.99 · Lg $3.99",
         description: "Deep-fried golden brown, seasoned to perfection.",
         image: "/images/appetizers/fries.jpg",
-      },
-      {
-        name: "French Fries (Large)",
-        price: "$3.99",
-        description: "Deep-fried golden brown, seasoned to perfection.",
       },
       {
         name: "Cheesy Bacon Fries",
