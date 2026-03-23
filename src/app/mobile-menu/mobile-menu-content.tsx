@@ -57,14 +57,7 @@ export function MobileMenuContent() {
       {/* ── Location card (scrolls away) ── */}
       <div className="border-b border-border bg-white px-4 pt-4 pb-3">
         <div className="flex items-start gap-3">
-          <Image
-            src="/images/logo.png"
-            alt="Till Five Pizza"
-            width={44}
-            height={44}
-            className="rounded-full shrink-0 mt-0.5"
-            loading="eager"
-          />
+          {/* Text left-aligned */}
           <div className="flex-1 min-w-0">
             <p className="font-bold text-base text-foreground leading-tight">Till Five Pizza</p>
             <p className="text-xs font-semibold text-brand mt-0.5">{location.name}</p>
@@ -88,16 +81,26 @@ export function MobileMenuContent() {
               </div>
             </div>
           </div>
-          {/* Storefront image */}
-          <div className="relative h-[110px] w-[130px] shrink-0 overflow-hidden rounded-xl">
+          {/* Right column: logo centered on top, storefront below */}
+          <div className="flex shrink-0 flex-col items-center gap-2">
             <Image
-              src="/images/storefront.jpg"
-              alt="Murfreesboro Pike location"
-              fill
-              className="object-cover"
-              sizes="130px"
+              src="/images/logo.png"
+              alt="Till Five Pizza"
+              width={44}
+              height={44}
+              className="rounded-full"
               loading="eager"
             />
+            <div className="relative h-[72px] w-[88px] overflow-hidden rounded-xl">
+              <Image
+                src="/images/storefront.jpg"
+                alt="Murfreesboro Pike location"
+                fill
+                className="object-cover"
+                sizes="88px"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
       </div>
