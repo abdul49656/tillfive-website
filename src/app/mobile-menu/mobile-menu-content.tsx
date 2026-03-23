@@ -63,33 +63,41 @@ export function MobileMenuContent() {
   return (
     <>
       {/* ── Mini hero (scrolls away) ── */}
-      <div className="relative h-28 overflow-hidden">
+      <div className="relative h-36 overflow-hidden">
         <Image
           src="/images/storefront.jpg"
           alt="Till Five Pizza – Murfreesboro Pike"
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           sizes="100vw"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-black/60" />
 
-        {/* Content — centered vertically */}
-        <div className="relative z-10 flex h-full flex-col items-start justify-center px-5">
-          <p className="text-2xl font-black text-white leading-tight">Mobile Menu</p>
-          <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
-            Till Five Pizza · {location.name}
-          </p>
-        </div>
+        {/* Content */}
+        <div className="relative z-10 flex h-full items-center justify-between px-5">
+          <div>
+            <p className="text-xl font-black text-white leading-tight">Mobile Menu</p>
+            <p className="mt-1 text-sm font-semibold text-white">Till Five Pizza</p>
+            <div className="mt-1.5 flex flex-col gap-1">
+              <div className="flex items-center gap-1.5">
+                <MapPin size={11} className="shrink-0 text-white/70" />
+                <p className="text-xs text-white/80">{location.address}, {location.city}</p>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Clock size={11} className="shrink-0 text-white/70" />
+                <p className="text-xs text-white/80">Open {location.hours}</p>
+              </div>
+            </div>
+          </div>
 
-        {/* Logo — top right */}
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 z-10">
+          {/* Logo */}
           <Image
             src="/images/logo.png"
             alt="Till Five Pizza"
-            width={44}
-            height={44}
-            className="rounded-full border-2 border-white/30 shadow-xl"
+            width={48}
+            height={48}
+            className="shrink-0 rounded-full border-2 border-white/30 shadow-xl"
             loading="eager"
           />
         </div>
