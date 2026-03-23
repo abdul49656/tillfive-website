@@ -38,14 +38,14 @@ export function CollapsibleSection({
     <div className={className}>
       <button
         onClick={handleToggle}
-        className="group flex w-full items-center justify-between border-b border-border pb-4"
+        className="group flex w-full items-center justify-between rounded-xl bg-brand-light px-4 py-3.5 transition-colors duration-200 hover:bg-brand/10"
       >
         <div className="text-left">
-          <h2 className="text-3xl font-bold text-foreground group-hover:text-brand transition-colors duration-300">
+          <h2 className="text-xl font-bold text-brand sm:text-2xl">
             {title}
           </h2>
           {description && (
-            <p className="mt-2 text-sm text-foreground-muted">{description}</p>
+            <p className="mt-1 text-sm text-foreground-muted">{description}</p>
           )}
         </div>
         <motion.div
@@ -53,7 +53,7 @@ export function CollapsibleSection({
           transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
           className="shrink-0 ml-4"
         >
-          <ChevronDown size={24} className="text-foreground-muted group-hover:text-brand transition-colors duration-300" />
+          <ChevronDown size={22} className="text-brand" />
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -65,7 +65,7 @@ export function CollapsibleSection({
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             className="overflow-hidden"
           >
-            <div className="pt-6">
+            <div className="pt-5">
               {children}
             </div>
           </motion.div>
