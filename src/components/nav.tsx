@@ -89,8 +89,6 @@ export function Nav() {
           ))}
           <a
             href={siteConfig.orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="rounded-full bg-brand px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/25 hover:-translate-y-0.5"
           >
             Order Now
@@ -148,8 +146,6 @@ export function Nav() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
                 href={siteConfig.orderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="mt-2 rounded-full bg-brand px-6 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-brand-hover"
               >
                 Order Now

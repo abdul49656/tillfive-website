@@ -109,8 +109,6 @@ export default function MenuPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             href={siteConfig.orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-lg hover:shadow-brand/25 hover:-translate-y-0.5"
           >
             <ShoppingBag size={16} />
@@ -223,8 +221,6 @@ export default function MenuPage() {
           </p>
           <a
             href={siteConfig.orderUrl}
-            target="_blank"
-            rel="noopener noreferrer"
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-xl hover:shadow-brand/25 hover:-translate-y-1"
           >
             <ShoppingBag size={18} />

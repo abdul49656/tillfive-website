@@ -222,8 +222,6 @@ export default function AboutPage() {
                   </Link>
                   <a
                     href={siteConfig.orderUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:border-brand hover:text-brand hover:-translate-y-0.5"
                   >
                     Order Catering

@@ -19,8 +19,6 @@ export function MobileCtaBar() {
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-surface/95 backdrop-blur-md px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:hidden">
       <a
         href={siteConfig.orderUrl}
-        target="_blank"
-        rel="noopener noreferrer"
         className="flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-brand-hover"
       >
         <ShoppingBag size={18} />

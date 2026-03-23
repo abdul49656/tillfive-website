@@ -142,8 +142,6 @@ function ParallaxHero() {
             >
               <a
                 href={siteConfig.orderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-1"
               >
                 Order Now
@@ -190,7 +188,7 @@ export default function HomePage() {
           ]}
           speed={40}
           reverse
-          textClassName="text-xl font-bold uppercase tracking-[0.15em] text-foreground/80"
+          textClassName="text-sm md:text-xl font-bold uppercase tracking-[0.15em] text-foreground/80"
           separator="✦"
         />
       </section>
@@ -293,7 +291,7 @@ export default function HomePage() {
           ]}
           speed={50}
           reverse
-          textClassName="text-2xl font-bold uppercase tracking-[0.1em] text-white"
+          textClassName="text-sm md:text-2xl font-bold uppercase tracking-[0.1em] text-white"
           separator=""
         />
       </section>
@@ -517,8 +515,6 @@ export default function HomePage() {
             </p>
             <a
               href={siteConfig.orderUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-brand-hover hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-1"
             >
               Order Now
