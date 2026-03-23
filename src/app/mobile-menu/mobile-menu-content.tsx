@@ -68,38 +68,41 @@ export function MobileMenuContent() {
           src="/images/storefront.jpg"
           alt="Till Five Pizza – Murfreesboro Pike"
           fill
-          className="object-cover object-[center_20%]"
+          className="object-cover object-[center_30%]"
           sizes="100vw"
           loading="eager"
         />
         <div className="absolute inset-0 bg-black/60" />
 
-        {/* Content */}
-        <div className="relative z-10 flex h-full items-center justify-between px-5">
-          <div>
-            <p className="text-xl font-black text-white leading-tight">Mobile Menu</p>
-            <p className="mt-1 text-sm font-semibold text-white">Till Five Pizza</p>
-            <div className="mt-1.5 flex flex-col gap-1">
-              <div className="flex items-center gap-1.5">
-                <MapPin size={11} className="shrink-0 text-white/70" />
-                <p className="text-xs text-white/80">{location.address}, {location.city}</p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock size={11} className="shrink-0 text-white/70" />
-                <p className="text-xs text-white/80">Open {location.hours}</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Logo */}
+        {/* Logo — top right */}
+        <div className="absolute top-4 right-4 z-10">
           <Image
             src="/images/logo.png"
             alt="Till Five Pizza"
-            width={48}
-            height={48}
-            className="shrink-0 rounded-full border-2 border-white/30 shadow-xl"
+            width={44}
+            height={44}
+            className="rounded-full border-2 border-white/30 shadow-xl"
             loading="eager"
           />
+        </div>
+
+        {/* Content — vertically centered */}
+        <div className="relative z-10 flex h-full flex-col justify-center px-5">
+          <p className="text-xl font-black text-white leading-tight">Mobile Menu</p>
+          <p className="mt-1 text-sm font-semibold text-white">Till Five Pizza</p>
+          <div className="mt-1.5 flex flex-col gap-1">
+            <div className="flex items-start gap-1.5">
+              <MapPin size={11} className="mt-0.5 shrink-0 text-white/70" />
+              <div>
+                <p className="text-xs text-white/80">{location.address}</p>
+                <p className="text-xs text-white/80">{location.city}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <Clock size={11} className="shrink-0 text-white/70" />
+              <p className="text-xs text-white/80">Open {location.hours}</p>
+            </div>
+          </div>
         </div>
       </div>
 
