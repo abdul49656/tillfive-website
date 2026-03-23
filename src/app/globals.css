@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  /* Backgrounds */
+  --background: #FFFFFF;
+  --background-alt: #F9F9F9;
+  --surface: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+
+  /* Text */
+  --foreground: #111111;
+  --foreground-muted: #555555;
+  --foreground-subtle: #999999;
+
+  /* Brand — Till Five Red */
+  --brand: #BD0016;
+  --brand-hover: #9A0012;
+  --brand-light: #FEE8EA;
+
+  /* Borders */
+  --border: #E5E5E5;
+  --border-strong: #D4D4D4;
+
+  /* Semantic */
+  --success: #16A34A;
+  --error: #DC2626;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-light: var(--brand-light);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --font-display: "Poppins", system-ui, sans-serif;
+  --font-body: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar on category nav / marquees */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--marquee-duration, 30s) linear infinite;
+}
+
+/* Carousel auto-scroll */
+@keyframes carousel-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-carousel {
+  animation: carousel-scroll var(--carousel-duration, 25s) linear infinite;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--brand) 0%, #ff4d4d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Video overlay */
+.video-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5) 0%,
+    rgba(0,0,0,0.3) 40%,
+    rgba(0,0,0,0.6) 100%
+  );
+  z-index: 1;
+}
