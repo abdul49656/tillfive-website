@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { MapPin, Phone, Clock, ShoppingBag } from "lucide-react";
+import { MapPin, Phone, Clock, ShoppingBag, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { menuCategories } from "@/lib/menu-data";
 import { locations } from "@/lib/site-data";
@@ -17,6 +17,7 @@ const location = locations[0]; // Murfreesboro Pike
 
 export function MobileMenuContent() {
   const [activeCategory, setActiveCategory] = useState(menuCategories[0].id);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
   const categoryNavRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
@@ -49,59 +50,53 @@ export function MobileMenuContent() {
 
   function scrollToCategory(id: string) {
     setActiveCategory(id);
+    setOpenSections((prev) => ({ ...prev, [id]: true }));
     sectionRefs.current[id]?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function toggleSection(id: string) {
+    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
   }
 
   return (
     <>
-      {/* ── Location card (scrolls away) ── */}
-      <div className="border-b border-border bg-white px-4 pt-4 pb-3">
-        <div className="flex items-start gap-3">
-          {/* Text left-aligned */}
-          <div className="flex-1 min-w-0">
-            <p className="font-bold text-base text-foreground leading-tight">Till Five Pizza</p>
-            <p className="text-xs font-semibold text-brand mt-0.5">{location.name}</p>
-            <div className="mt-1.5 flex flex-col gap-0.5">
-              <div className="flex items-start gap-1.5">
-                <MapPin size={11} className="shrink-0 text-foreground-subtle mt-0.5" />
-                <div>
-                  <p className="text-xs text-foreground-muted">{location.address}</p>
-                  <p className="text-xs text-foreground-muted">{location.city}</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Clock size={11} className="shrink-0 text-foreground-subtle" />
-                <p className="text-xs text-foreground-muted">Open {location.hours}</p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Phone size={11} className="shrink-0 text-foreground-subtle" />
-                <a href={`tel:${location.phoneRaw}`} className="text-xs text-foreground-muted">
-                  {location.phone}
-                </a>
-              </div>
-            </div>
+      {/* ── Mini hero (scrolls away) ── */}
+      <div className="relative h-60 overflow-hidden">
+        <Image
+          src="/images/storefront.jpg"
+          alt="Till Five Pizza – Murfreesboro Pike"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          loading="eager"
+        />
+        {/* Gradient: light at top, dark at bottom for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-black/80" />
+
+        {/* Centered store info */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 pb-8 text-center">
+          <Image
+            src="/images/logo.png"
+            alt="Till Five Pizza"
+            width={52}
+            height={52}
+            className="rounded-full border-2 border-white/25 shadow-lg mb-3"
+            loading="eager"
+          />
+          <p className="text-xl font-bold text-white leading-tight">Till Five Pizza</p>
+          <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
+            {location.name}
+          </p>
+          <div className="mt-2.5 space-y-0.5">
+            <p className="text-xs text-white/70">{location.address}, {location.city}</p>
+            <p className="text-xs text-white/70">Open {location.hours}</p>
           </div>
-          {/* Right column: logo centered on top, storefront below */}
-          <div className="flex shrink-0 flex-col items-center gap-2">
-            <Image
-              src="/images/logo.png"
-              alt="Till Five Pizza"
-              width={44}
-              height={44}
-              className="rounded-full"
-              loading="eager"
-            />
-            <div className="relative h-[72px] w-[88px] overflow-hidden rounded-xl">
-              <Image
-                src="/images/storefront.jpg"
-                alt="Murfreesboro Pike location"
-                fill
-                className="object-cover"
-                sizes="88px"
-                loading="eager"
-              />
-            </div>
-          </div>
+        </div>
+
+        {/* Scroll prompt */}
+        <div className="absolute bottom-3 inset-x-0 flex flex-col items-center gap-0.5">
+          <p className="text-[10px] uppercase tracking-[0.22em] text-white/40">View Menu</p>
+          <ChevronDown size={13} className="text-white/30" />
         </div>
       </div>
 
@@ -155,7 +150,8 @@ export function MobileMenuContent() {
               <CollapsibleSection
                 title={cat.name}
                 description={cat.id === "pizza" || cat.id === "specialty" ? undefined : cat.description}
-                defaultOpen={true}
+                open={openSections[cat.id] ?? false}
+                onToggle={() => toggleSection(cat.id)}
               >
                 {cat.id === "pizza" && (
                   <PizzaBuilderInfo />

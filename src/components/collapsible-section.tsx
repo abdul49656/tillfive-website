@@ -9,6 +9,10 @@ type CollapsibleSectionProps = {
   title: string;
   description?: string;
   defaultOpen?: boolean;
+  /** Controlled mode: pass open state from parent */
+  open?: boolean;
+  /** Controlled mode: called when user clicks the header */
+  onToggle?: () => void;
   children: React.ReactNode;
   className?: string;
 };
@@ -17,15 +21,23 @@ export function CollapsibleSection({
   title,
   description,
   defaultOpen = true,
+  open,
+  onToggle,
   children,
   className,
 }: CollapsibleSectionProps) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
+  const [internalOpen, setInternalOpen] = useState(defaultOpen);
+  const isOpen = open !== undefined ? open : internalOpen;
+
+  function handleToggle() {
+    if (onToggle) onToggle();
+    else setInternalOpen((v) => !v);
+  }
 
   return (
     <div className={className}>
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleToggle}
         className="group flex w-full items-center justify-between border-b border-border pb-4"
       >
         <div className="text-left">
