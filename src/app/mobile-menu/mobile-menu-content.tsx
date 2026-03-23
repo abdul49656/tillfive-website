@@ -63,45 +63,35 @@ export function MobileMenuContent() {
   return (
     <>
       {/* ── Mini hero (scrolls away) ── */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-28 overflow-hidden">
         <Image
           src="/images/storefront.jpg"
           alt="Till Five Pizza – Murfreesboro Pike"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           sizes="100vw"
           loading="eager"
         />
-        {/* Heavier gradient so the glass card reads cleanly */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/75" />
+        <div className="absolute inset-0 bg-black/55" />
+
+        {/* Content — centered vertically */}
+        <div className="relative z-10 flex h-full flex-col items-start justify-center px-5">
+          <p className="text-2xl font-black text-white leading-tight">Mobile Menu</p>
+          <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand">
+            Till Five Pizza · {location.name}
+          </p>
+        </div>
 
         {/* Logo — top right */}
-        <div className="absolute top-4 right-4 z-10">
+        <div className="absolute top-1/2 -translate-y-1/2 right-4 z-10">
           <Image
             src="/images/logo.png"
             alt="Till Five Pizza"
-            width={50}
-            height={50}
+            width={44}
+            height={44}
             className="rounded-full border-2 border-white/30 shadow-xl"
             loading="eager"
           />
-        </div>
-
-        {/* Glass card — bottom, left-aligned text */}
-        <div className="absolute bottom-0 inset-x-0 p-4">
-          <div className="rounded-2xl bg-black/45 px-4 py-3.5 backdrop-blur-sm">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/50">
-              Mobile Menu
-            </p>
-            <p className="mt-0.5 text-xl font-bold text-white leading-tight">Till Five Pizza</p>
-            <p className="mt-0.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-brand">
-              {location.name}
-            </p>
-            <div className="mt-2 flex flex-col gap-0.5">
-              <p className="text-xs text-white/65">{location.address}, {location.city}</p>
-              <p className="text-xs text-white/65">Open {location.hours}</p>
-            </div>
-          </div>
         </div>
       </div>
 
