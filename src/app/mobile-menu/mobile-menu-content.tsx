@@ -68,7 +68,7 @@ export function MobileMenuContent() {
           src="/images/storefront.jpg"
           alt="Till Five Pizza – Murfreesboro Pike"
           fill
-          className="object-cover object-top"
+          className="object-cover object-[center_20%]"
           sizes="100vw"
           loading="eager"
         />
