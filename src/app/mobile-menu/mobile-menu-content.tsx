@@ -5,7 +5,10 @@ import Image from "next/image";
 import { Phone, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { menuCategories } from "@/lib/menu-data";
-import { siteConfig, locations } from "@/lib/site-data";
+import { locations } from "@/lib/site-data";
+
+const NASHVILLE_ORDER_URL =
+  "https://tillfivepizza.activemenus.com/glue/Antioch-Airport-Downtown-menu/134349";
 import { CollapsibleSection } from "@/components/collapsible-section";
 
 export function MobileMenuContent() {
@@ -178,7 +181,7 @@ export function MobileMenuContent() {
             Call Now
           </a>
           <a
-            href={siteConfig.orderUrl}
+            href={NASHVILLE_ORDER_URL}
             className="flex flex-1 items-center justify-center gap-2 rounded-full bg-brand px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-hover"
           >
             <ShoppingBag size={16} />

@@ -3,7 +3,7 @@ export const siteConfig = {
   tagline: "Nashville's Late-Night Slice",
   description:
     "Hand-tossed dough made fresh daily with top-tier locally sourced ingredients. Open 10 AM to 5 AM.",
-  orderUrl: "https://tillfivepizza.activemenus.com/glue/Antioch-Airport-Downtown-menu/134349",
+  orderUrl: "https://tillfivepizza.activemenus.com",
   instagram: "https://instagram.com/tillfivepizza",
   facebook: "https://facebook.com/61574102410877",
 };
