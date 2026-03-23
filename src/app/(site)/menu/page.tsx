@@ -121,10 +121,10 @@ export default function MenuPage() {
 
       {/* Sticky category nav */}
       <div className="sticky top-[73px] z-30 border-b border-border bg-white/95 backdrop-blur-md">
-        <div className="mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-7xl px-4 py-2.5">
           <div
             ref={navRef}
-            className="hide-scrollbar flex items-center gap-1 overflow-x-auto py-2.5 px-1"
+            className="hide-scrollbar flex items-center gap-1 overflow-x-auto"
           >
             {menuCategories.map((cat) => (
               <button
