@@ -90,7 +90,7 @@ export function SmsForm() {
                   className="text-sm text-foreground-muted leading-relaxed cursor-pointer"
                 >
                   By checking this box, you agree to receive promotional SMS text
-                  messages from Rasul Pizza LLC. Message frequency varies. Msg &amp;
+                  messages from Till Five Pizza (Rasul Pizza LLC). Message frequency varies. Msg &amp;
                   data rates may apply. Reply STOP at any time to opt out. Reply
                   HELP for help. Your information will not be shared with third
                   parties for their own marketing purposes. View our{" "}
