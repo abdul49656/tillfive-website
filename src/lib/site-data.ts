@@ -19,6 +19,8 @@ export const locations = [
     hours: "10:00 AM – 5:00 AM",
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=825+Murfreesboro+Pike+Nashville+TN+37217",
+    mapEmbedUrl:
+      "https://maps.google.com/maps?q=825+Murfreesboro+Pike+Nashville+TN+37217&output=embed",
   },
   {
     id: "music-valley",
@@ -30,6 +32,8 @@ export const locations = [
     hours: "3:00 PM – 5:00 AM",
     mapsUrl:
       "https://www.google.com/maps/search/?api=1&query=2450+Music+Valley+Dr+Nashville+TN+37214",
+    mapEmbedUrl:
+      "https://maps.google.com/maps?q=2450+Music+Valley+Dr+Nashville+TN+37214&output=embed",
   },
 ];
 
