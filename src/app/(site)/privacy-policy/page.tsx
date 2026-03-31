@@ -25,12 +25,14 @@ export default function PrivacyPolicyPage() {
 
             <Section title="1. Information We Collect">
               <p>
-                Till Five Pizza collects the following information when you use our
-                website, place an order, or sign up for SMS communications: name,
-                email address, phone number, delivery address, order history, and
-                device/browser information. We may also collect information
-                automatically through cookies and similar tracking technologies when
-                you visit our website.
+                This Privacy Policy applies to Rasul Pizza LLC, doing business as
+                Till Five Pizza (&ldquo;Till Five Pizza,&rdquo; &ldquo;we,&rdquo;
+                &ldquo;us,&rdquo; or &ldquo;our&rdquo;). Till Five Pizza collects
+                the following information when you use our website, place an order,
+                or sign up for SMS communications: name, email address, phone
+                number, delivery address, order history, and device/browser
+                information. We may also collect information automatically through
+                cookies and similar tracking technologies when you visit our website.
               </p>
             </Section>
 
@@ -117,7 +119,7 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy, contact us at:
               </p>
               <address>
-                <strong>Till Five Pizza</strong>
+                <strong>Rasul Pizza LLC d/b/a Till Five Pizza</strong>
                 <br />
                 825 Murfreesboro Pike, Nashville, TN 37217
                 <br />

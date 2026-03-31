@@ -25,9 +25,12 @@ export default function TermsOfServicePage() {
 
             <Section title="1. SMS Program Description">
               <p>
-                Till Five Pizza operates an SMS messaging program to send customers
-                promotional offers, special deals, and updates. By opting in to our
-                SMS program at{" "}
+                These Terms of Service govern the SMS messaging program operated by
+                Rasul Pizza LLC, doing business as Till Five Pizza (&ldquo;Till Five
+                Pizza,&rdquo; &ldquo;we,&rdquo; &ldquo;us,&rdquo; or
+                &ldquo;our&rdquo;). Till Five Pizza operates this program to send
+                customers promotional offers, special deals, and updates. By opting
+                in to our SMS program at{" "}
                 <Link href="/sms-signup">tillfivepizza.com/sms-signup</Link>, you
                 agree to receive recurring promotional text messages from Till Five
                 Pizza. Message frequency varies based on promotions and activity.
@@ -50,7 +53,7 @@ export default function TermsOfServicePage() {
                 us directly at:
               </p>
               <address>
-                <strong>Till Five Pizza</strong>
+                <strong>Rasul Pizza LLC d/b/a Till Five Pizza</strong>
                 <br />
                 825 Murfreesboro Pike, Nashville, TN 37217
                 <br />
@@ -110,7 +113,7 @@ export default function TermsOfServicePage() {
 
             <Section title="9. Contact Us">
               <address>
-                <strong>Till Five Pizza</strong>
+                <strong>Rasul Pizza LLC d/b/a Till Five Pizza</strong>
                 <br />
                 825 Murfreesboro Pike, Nashville, TN 37217
                 <br />
