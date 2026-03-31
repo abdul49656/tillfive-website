@@ -61,7 +61,8 @@ export default function PrivacyPolicyPage() {
                 <a href="mailto:info@tillfivepizza.com">info@tillfivepizza.com</a>.
                 Till Five Pizza will not share, sell, or disclose your SMS opt-in
                 information or phone number to any third party for their own
-                marketing purposes.
+                marketing purposes, except to SMS delivery providers as necessary
+                to send messages you have consented to receive.
               </p>
             </Section>
 
@@ -104,9 +105,10 @@ export default function PrivacyPolicyPage() {
                 SMS opt-in consent data with any third party for marketing purposes.
                 Your mobile information will not be shared with third parties or
                 affiliates for their own marketing or promotional purposes.
-                Information sharing with third parties for non-marketing purposes
-                such as order fulfillment and payment processing may occur as
-                necessary to operate our business.
+                Sharing with SMS delivery providers is permitted solely to
+                facilitate message delivery. Information sharing with other third
+                parties for non-marketing purposes such as order fulfillment and
+                payment processing may occur as necessary to operate our business.
               </p>
             </Section>
 
